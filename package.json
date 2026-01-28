@@ -1,0 +1,19 @@
+{
+  "name": "ai-agent-treasure-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./src/tool-file-read.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@langchain/core": "^1.1.17",
+    "@langchain/openai": "^1.2.3",
+    "dotenv": "^17.2.3",
+    "zod": "^4.3.6"
+  }
+}
