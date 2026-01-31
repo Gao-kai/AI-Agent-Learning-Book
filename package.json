@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node ./src/tool-file-read.js"
+    "build": "tsc",
+    "dev": "tsx ./src/tool-file-read.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,10 @@
     "@langchain/openai": "^1.2.3",
     "dotenv": "^17.2.3",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
