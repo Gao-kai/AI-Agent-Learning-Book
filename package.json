@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx ./src/tool-file-read.ts"
+    "dev": "tsx ./src/mini-cursor.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.1.0",
+    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
