@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx ./src/index.ts"
+    "dev": "tsx ./src/index.ts",
+    "tool": "tsx ./src/tools/write-file-tool.ts"
   },
   "keywords": [],
   "author": "",
