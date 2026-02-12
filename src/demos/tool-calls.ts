@@ -1,4 +1,4 @@
-import { tool } from "@langchain/core/tools";
+import { DynamicStructuredTool, tool } from "@langchain/core/tools";
 import { ChatOpenAI } from "@langchain/openai";
 import { z } from "zod";
 import fs from "node:fs/promises";
@@ -9,6 +9,7 @@ import {
   SystemMessage,
   ToolMessage,
 } from "@langchain/core/messages";
+import writeFile from "../tools/write-file";
 
 /**
  * 1. 创建对话模型
@@ -20,9 +21,9 @@ const model = new ChatOpenAI({
   configuration: {
     baseURL: process.env.BASE_URL,
   },
-  timeout: undefined,
-  maxTokens: undefined,
-  maxRetries: undefined,
+  // timeout: undefined,
+  // maxTokens: undefined,
+  // maxRetries: undefined,
 });
 
 /**
@@ -47,7 +48,7 @@ const readFile = tool(
 /**
  * 3. 模型绑定工具
  */
-const tools = [readFile];
+const tools = [readFile, writeFile];
 const modelWithTools = model.bindTools(tools);
 
 /**
@@ -67,7 +68,8 @@ const systemMessage = new SystemMessage(
     `,
 );
 const humanMessage = new HumanMessage(
-  `请读取 src/tools/write-file-tool.ts 文件内容并解释`,
+  `1. 请读取 src/tools/read-file.ts 文件内容后解释
+   2. 将解释内容写入到路径为 src/tools/1.md文件中`,
 );
 
 const messages: BaseMessage[] = [systemMessage, humanMessage];
@@ -86,7 +88,9 @@ async function runWithTools() {
   const toolResults = await Promise.all(
     response.tool_calls.map(async (tool_call) => {
       try {
-        const executedTool = tools.find((item) => item.name === tool_call.name);
+        const executedTool: DynamicStructuredTool = tools.find(
+          (item) => item.name === tool_call.name,
+        );
         if (!executedTool) {
           return `错误: 找不到工具 ${executedTool.name}`;
         }

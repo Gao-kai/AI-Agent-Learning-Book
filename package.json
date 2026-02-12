@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx ./src/index.ts",
-    "tool": "tsx ./src/tools/write-file-tool.ts"
+    "tool": "tsx ./src/demos/tool-calls.ts"
   },
   "keywords": [],
   "author": "",
