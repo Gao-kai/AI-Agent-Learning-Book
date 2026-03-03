@@ -11,7 +11,7 @@ const writeFileToolSchema = z.object({
 
 export type WriteFileToolInput = z.infer<typeof writeFileToolSchema>;
 
-const writeFile = tool(
+const writeFileTool = tool(
   async ({ filePath, content }: WriteFileToolInput) => {
     try {
       console.log(
@@ -38,4 +38,4 @@ const writeFile = tool(
   },
 );
 
-export default writeFile;
+export default writeFileTool;

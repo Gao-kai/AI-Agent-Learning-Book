@@ -9,7 +9,7 @@ const readFileToolSchema = z.object({
 
 export type ReadFileToolInput = z.infer<typeof readFileToolSchema>;
 
-const readFile = tool(
+const readFileTool = tool(
   async function ({ filePath }: ReadFileToolInput) {
     console.log(
       chalk.bgRed(`[工具调用]-read_file(文件读取工具) 文件路径:${filePath}`),
@@ -31,4 +31,4 @@ const readFile = tool(
   },
 );
 
-export default readFile;
+export default readFileTool;

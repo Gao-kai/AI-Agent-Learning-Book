@@ -16,7 +16,9 @@ async function listDirectory({ dirPath }: ListDirectoryToolInput) {
   const files = await fs.readdir(dirPath);
   const fileNames = files.map((item) => `- ${item}`).join("\n");
   console.log(
-    chalk.bgRed(`[list_directory 工具调用成功] 成功列出${files.length}个项目`),
+    chalk.bgGreen(
+      `[list_directory 工具调用成功] 成功列出${files.length}个项目`,
+    ),
   );
   return `列出${dirPath}目录下的项目如下:\n${fileNames}`;
 }
