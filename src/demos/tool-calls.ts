@@ -65,11 +65,12 @@ const systemMessage = new SystemMessage(
 
     可用工具列表
         - read_file
+        - write_file
     `,
 );
 const humanMessage = new HumanMessage(
-  `1. 请读取 src/tools/read-file.ts 文件内容后解释
-   2. 将解释内容写入到路径为 src/tools/1.md文件中`,
+  `1. 请读取 src/tools/read-file.ts 文件内容后解释代码
+   2. 将解释内容写入到路径为 src/output/explain.md文件中`,
 );
 
 const messages: BaseMessage[] = [systemMessage, humanMessage];
