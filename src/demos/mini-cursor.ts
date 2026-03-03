@@ -55,7 +55,7 @@ async function runAgentWithTools(
     let response = await modelWithTools.invoke(messages);
     messages.push(response);
 
-    if (response?.tool_calls?.length === 0) {
+    if (!response.tool_calls || response?.tool_calls?.length === 0) {
       console.log(chalk.bgMagenta(`💥AI最终输出如下：\n${response.content}`));
       return response.content;
     }
@@ -99,6 +99,7 @@ const humanMessage = new HumanMessage(`
      - 使用 CSS transitions
 
     5. 列出目录确认
+    6. 安装依赖并且本地启动项目
 `);
 
 runAgentWithTools(humanMessage);
