@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx ./src/index.ts",
-    "tool": "tsx ./src/demos/mini-cursor.ts",
+    "tool": "tsx ./src/mcp/mcp-client-demo.ts",
     "test": "tsx ./src/test/node.ts"
   },
   "keywords": [],

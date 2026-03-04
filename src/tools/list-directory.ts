@@ -20,6 +20,7 @@ async function listDirectory({ dirPath }: ListDirectoryToolInput) {
       `[list_directory 工具调用成功] 成功列出${files.length}个项目`,
     ),
   );
+  console.log(fileNames);
   return `列出${dirPath}目录下的项目如下:\n${fileNames}`;
 }
 

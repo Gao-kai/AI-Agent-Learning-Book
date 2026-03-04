@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "artest-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "tsx",
+        "/Users/artest/Project/AI-Agent-Learning-Book/src/mcp/mcp-server-demo.ts"
+      ]
+    }
+  }
+}

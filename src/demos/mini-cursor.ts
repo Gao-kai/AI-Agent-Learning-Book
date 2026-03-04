@@ -47,7 +47,7 @@ async function runAgentWithTools(
   const messages: BaseMessage[] = [systemMessage, humanMessage];
 
   for (let i = 0; i < maxIterations; i++) {
-    console.log(chalk.bgBlue(`⏳AI大模型第${i}轮思考中...`));
+    console.log(chalk.bgBlue(`⏳AI大模型第${i + 1}轮思考中...`));
     /**
      * 1. 什么时候循环中止？
      * AI大模型返回的结果数组中tool_calls为空的时候
@@ -99,7 +99,8 @@ const humanMessage = new HumanMessage(`
      - 使用 CSS transitions
 
     5. 列出目录确认
-    6. 安装依赖并且本地启动项目
+    6. 安装依赖
+    7. 本地启动项目
 `);
 
 runAgentWithTools(humanMessage);
