@@ -1,4 +1,4 @@
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import "dotenv/config";
 
 const model = new ChatOpenAI({
@@ -13,4 +13,12 @@ const model = new ChatOpenAI({
   // maxRetries: undefined,
 });
 
-export default model;
+const embeddingModel = new OpenAIEmbeddings({
+  model: process.env.EMBEDDING_MODEL_NAME,
+  apiKey: process.env.OPENAI_API_KEY,
+  configuration: {
+    baseURL: process.env.BASE_URL,
+  },
+});
+
+export { model, embeddingModel };
