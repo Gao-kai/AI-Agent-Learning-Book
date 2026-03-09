@@ -3,3 +3,4 @@
 .github/
 .DS_Store
 node_modules/
+milvus/volumes/**/*
