@@ -7,3 +7,5 @@ milvus/volumes/**/*
 .DS_Store
 .idea/
 .trae/
+**/*.pyc
+**/*.pkl
