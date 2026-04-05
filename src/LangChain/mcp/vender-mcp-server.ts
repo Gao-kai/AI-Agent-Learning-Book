@@ -1,5 +1,5 @@
 import { MultiServerMCPClient } from "@langchain/mcp-adapters";
-import model from "../share/model";
+import { model } from "../share/model";
 import {
   BaseMessage,
   HumanMessage,

@@ -7,7 +7,7 @@ import {
   ToolMessage,
   SystemMessage,
 } from "@langchain/core/messages";
-import model from "../share/model";
+import { model } from "../share/model";
 import { MultiServerMCPClient } from "@langchain/mcp-adapters";
 import chalk from "chalk";
 

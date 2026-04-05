@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import model from "../share/model";
+import { model } from "../share/model";
 import execCommandTool from "../tools/exec-command";
 import listDirectoryTool from "../tools/list-directory";
 import readFileTool from "../tools/read-file";
