@@ -9,8 +9,8 @@
     "tool": "tsx ./src/mcp/mcp-client-demo.ts",
     "mcp": "tsx ./src/mcp/vender-mcp-server.ts",
     "rag": "tsx ./src/rag/text-splitter-strategy/LanguageSplitter.ts",
+    "memory": "tsx ./src/LangChain/memory/memory-truncation-strategy.ts",
     "milvus": "tsx ./src/rag/milvus.ts",
-    "lakers": "tsx ./src/rag/hupu-lakers-loader.ts",
     "test": "tsx ./src/test/node.ts"
   },
   "keywords": [],
