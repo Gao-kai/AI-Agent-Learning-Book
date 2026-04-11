@@ -24,3 +24,5 @@
 
   trimMessages 的 api，可以根据 token 来截断消息
   history + trimMessages 的 api
+
+js-tiktoken 核心 API总结

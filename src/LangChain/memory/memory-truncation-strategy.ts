@@ -100,6 +100,9 @@ async function truncationByTokenCount() {
   }
 
   let totalMessages = await inMemoryChatMessageHistory.getMessages();
+  /**
+   * trimMessages可以按照消息数量或者token总数对历史消息数组进行截断
+   */
   let trimmedMessage = await trimMessages(totalMessages, {
     maxTokens: 120,
     strategy: "last",
