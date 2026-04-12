@@ -9,7 +9,7 @@
     "tool": "tsx ./src/mcp/mcp-client-demo.ts",
     "mcp": "tsx ./src/mcp/vender-mcp-server.ts",
     "rag": "tsx ./src/rag/text-splitter-strategy/LanguageSplitter.ts",
-    "memory": "tsx ./src/LangChain/memory/memory-summarization-strategy.ts",
+    "memory": "tsx ./src/LangChain/memory/memory-retrieval-strategy.ts",
     "milvus": "tsx ./src/rag/milvus.ts",
     "test": "tsx ./src/test/node.ts"
   },
