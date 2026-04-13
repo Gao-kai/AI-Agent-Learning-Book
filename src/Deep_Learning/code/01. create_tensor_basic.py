@@ -11,7 +11,6 @@
     如果未指定数据类型，默认创建的张量类型为 torch.float32。
     如果数据和指定的数据类型不匹配会自动转换为指定的数据类型。
 2. torch.Tensor 创建张量时，不可以手动指定数据类型
-
 """
 
 import torch
@@ -42,11 +41,11 @@ def runTest01():
 
     # 通过numpy数组创建
     data = np.random.randint(0,10,(3,2))
-    t4 = torch.tensor(data,dtype=torch.int32)
+    t4 = torch.FloatTensor(data)
     print(f't4:{t4}')
     print(f't4类型:{type(t4)}')
     print('='* 30)
-
+ 
 # 通过torch.Tensor创建张量
 # torch.Tensor支持根据数据创建张量
 # torch.Tensor不支持创建张量的同时指定数据类型
