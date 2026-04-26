@@ -1,4 +1,6 @@
 import jieba
+import jieba.posseg as pseg
+import os
 
 """
 中文分词工具jieba使用
@@ -130,6 +132,72 @@ def consume_iterator(iterator):
     print(f"   解包结果：{[*it]}")
 
 
+def custom_dict(text):
+    """
+    自定义词典 - 加载自定义词典文件
+    
+    说明：
+    - 自定义词典文件格式：每个词占一行，每个词之间用空格分隔 依次表示词(必填)、词频(可选)、词性(可选)
+    - 例如：云计算 100 n 
+    - 使用自定义字典后，会优先使用自定义词典中的词进行分词，如果自定义词典中没有，会使用默认词典中的词进行分词
+
+    注意：
+    - 自定义词典文件编码必须为UTF-8
+    - jieba会加载默认的词典库，如果自定义加载的词典中词语和默认库冲突，会按照词频最大的那个词进行分词
+    
+    :return: None
+    """
+    # 加载自定义词典（使用绝对路径确保可靠性）
+    dict_path = os.path.join(os.path.dirname(__file__), "../dict/user-dict.txt")
+    jieba.load_userdict(dict_path)
+
+    # 基于自定义词典进行分词
+    result_by_custom_dict = jieba.lcut(text, cut_all=False)
+
+    return result_by_custom_dict
+
+
+def pos_tagging(text):
+    """
+    词性标注 - 为分词后的每个词标注词性
+
+    特点：
+    - 基于HMM模型和Viterbi算法
+    - 同时返回词语和对应的词性标签
+    - 适合词性统计、句法分析等场景
+
+    常用词性标签：
+    - n: 名词
+    - nr: 人名
+    - ns: 地名
+    - nt: 时间机构名
+    - nz: 其他专名
+    - v: 动词
+    - vd: 副动词
+    - vn: 名动词
+    - a: 形容词
+    - ad: 副形词
+    - an: 名形词
+    - d: 副词
+    - m: 量词
+    - q: 量词
+    - r: 代词
+    - p: 介词
+    - c: 连词
+    - u: 助词
+    - xc: 其他虚词
+    - w: 标点符号
+    -PER: 人名
+    -LOC: 地名
+    -TIME: 时间
+
+    :param text: 待标注的中文文本字符串
+    :return: 分词及词性标注结果列表，每个元素为(word, flag)元组
+    """
+    result = pseg.lcut(text)
+    return result
+
+
 if __name__ == "__main__":
     # 测试文本
     test_text = "我爱自然语言处理和人工智能"
@@ -165,3 +233,18 @@ if __name__ == "__main__":
     
     # 演示迭代器消费方式
     consume_iterator(jieba.cut("迭代器消费演示", cut_all=False))
+
+    # 演示自定义词典
+    result_by_custom_dict = precise_mode('当前时代，云计算和云原生成为了AI大模型的主流应用。')
+    print("   结果：", result_by_custom_dict)
+    print()
+
+    # 演示词性标注
+    print("5. 词性标注：")
+    pos_result = pos_tagging(test_text)
+    print("   结果：", pos_result)
+    print("   格式化输出：")
+    for word, flag in pos_result:
+        print(f"   {word}/{flag}", end=" ")
+    print()
+    

@@ -87,9 +87,6 @@ def demo_unsqueeze():
     print("张量:\n", unsqueezed_dim2)
 
 
-
-
-
 def demo_transpose():
     """
     transpose 函数
