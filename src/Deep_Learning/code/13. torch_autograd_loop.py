@@ -14,17 +14,17 @@ print(f'损失函数Loss为:{Loss}')
 
 # 3. 基于梯度下降法更新权重w(w1 = w0-学习率*梯度)
 for i in range(1,101):
-    # 3.1 正向传播 因为当w.data更新之后，w也会更新，因此这里的损失值Loss也需要更新
+    # 3.1 正向传播 【随着w权重的不断更新 损失函数Loss会不断更新为最小值】
     Loss = w ** 2 + 20
 
-    # 3.2 梯度清零（为什么需要清零？）
+    # 3.2 梯度清零【pytorch默认是梯度累加】
     if w.grad is not None:
         w.grad.zero_()
     
-    # 3.3 反向传播（自动对损失函数求在w分量上的偏导 记录在w的grad属性中）
+    # 3.3 反向传播【自动对损失函数求在w分量上的偏导 其实就是梯度grad 记录在w的grad属性中】
     Loss.backward()
 
-    # 3.4 更新权重w(w1 = w0-学习率*梯度)
+    # 3.4 更新权重w张量的data值(w1 = w0 - 学习率 * 梯度)
     w.data = w.data - 0.01 * w.grad
     print(f'更新后的权重w为:{w}',f'当前损失函数Loss为:{Loss}')
 

@@ -16,7 +16,7 @@ PyTorch 自动求导机制
 # 1. 导入torch库
 import torch
 
-# 2. 设置标量张量w
+# 2. 设置初步标量张量w
 w = torch.tensor(10, requires_grad=True,dtype=torch.float32)
 print(f'权重标量w为:{w}')
 
