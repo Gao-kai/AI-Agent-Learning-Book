@@ -48,16 +48,21 @@ learning_rate = 0.01
 for epoch in range(10):
     # 前向传播计算预测值z
     z = torch.matmul(x,w) + b;
+
     # 计算损失函数Loss
     Loss = criterion(z,y)
+
     # 反向传播计算梯度grad
     Loss.backward()
+
     # 更新权重w和偏置项b
     w.data -= learning_rate * w.grad
     b.data -= learning_rate * b.grad
+
     # 清空梯度grad 避免累加计算
     w.grad.zero_()
     b.grad.zero_()
+    
     print(f"第{epoch}轮w为：{w.data}")
     print(f"第{epoch}轮b为：{b.data}")
     print(f"第{epoch}轮损失值为：{Loss.item()}")
