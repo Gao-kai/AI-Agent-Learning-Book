@@ -8,9 +8,9 @@ const model = new ChatOpenAI({
   configuration: {
     baseURL: process.env.BASE_URL,
   },
-  // timeout: undefined,
-  // maxTokens: undefined,
-  // maxRetries: undefined,
+  timeout: undefined,
+  maxTokens: undefined,
+  maxRetries: undefined,
 });
 
 const embeddingModel = new OpenAIEmbeddings({
