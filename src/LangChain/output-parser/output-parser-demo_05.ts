@@ -31,6 +31,10 @@ const model = new ChatOpenAI({
  * questions:
  * 1. 直接绑定一个没有工具调用函数的工具用来获取工具调用时的结构化参数是否可行？
  * 2. 为什么说这种方式比 output parser 更好？
+ * - 首先不需要手动定义parser，也就是StructuredOutputParser.fromZodSchema
+ * - 其次不需要手动向prompt里面加入parser.getFormatInstructions提示词
+ * - 最后不需要手动parser.parse解析返回的response.content
+ * - 并且AI大模型会保证生成tool_calls的参数一定是符合格式要求的，如果不符合会重写生成
  */
 const modelWithTools = model.bindTools([
   {

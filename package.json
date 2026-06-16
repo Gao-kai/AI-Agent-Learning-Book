@@ -11,7 +11,7 @@
     "rag": "tsx ./src/rag/text-splitter-strategy/LanguageSplitter.ts",
     "memory": "tsx ./src/LangChain/memory/memory-retrieval-strategy.ts",
     "milvus": "tsx ./src/rag/milvus.ts",
-    "output-parser": "tsx ./src/LangChain/output-parser/output-parser-demo_05.ts",
+    "output-parser": "tsx ./src/LangChain/output-parser/output-parser-demo_流式输出.ts",
     "test": "tsx ./src/test/node.ts"
   },
   "keywords": [],

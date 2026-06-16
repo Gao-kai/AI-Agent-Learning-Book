@@ -7,6 +7,12 @@ import os
 1. 精确模式
 2. 全模式
 3. 搜索引擎模式
+4. 加载自定义词典
+5. 支持词性标注
+6. 支持迭代器模式cut方法，可通过下面方法消费迭代器对象
+    - next函数
+    - for in循环
+    - list方法（所以jieba.lcut返回列表本质就是一个语法糖）
 """
 
 
@@ -52,6 +58,12 @@ def search_engine_mode(text):
     - 在精确模式基础上，对长词进行再次切分
     - 提高召回率，适合搜索引擎构建倒排索引
     - 兼顾精确性和召回率
+
+    实际应用：
+    假设商品标题为“苹果手机保护壳”，用户搜索“苹果壳”
+    精确模式只能切分为：苹果 手机 保护壳 用户无法检索到 ❌
+    搜索引擎模式可以切分为：苹果 手机 保护 壳 用户可以检索到 ✅
+    
     
     :param text: 待分词的中文文本字符串
     :return: 分词结果列表
@@ -199,6 +211,7 @@ def pos_tagging(text):
 
 
 if __name__ == "__main__":
+
     # 测试文本
     test_text = "我爱自然语言处理和人工智能"
     
@@ -223,6 +236,7 @@ if __name__ == "__main__":
     search_result = search_engine_mode(test_text)
     print("   结果：", search_result) 
     print()
+    # 结果： ['我', '爱', '自然', '语言', '自然语言', '处理', '和', '人工', '智能', '人工智能']
     
     # 演示cut方法（返回迭代器）
     print("4. cut方法（返回迭代器）：")
@@ -235,7 +249,7 @@ if __name__ == "__main__":
     consume_iterator(jieba.cut("迭代器消费演示", cut_all=False))
 
     # 演示自定义词典
-    result_by_custom_dict = precise_mode('当前时代，云计算和云原生成为了AI大模型的主流应用。')
+    result_by_custom_dict = custom_dict('当前时代，云计算和云原生成为了AI大模型的主流应用。')
     print("   结果：", result_by_custom_dict)
     print()
 
