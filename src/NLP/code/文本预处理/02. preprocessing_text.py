@@ -8,9 +8,22 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 import joblib
 
 
+"""
+创建one-hot编码并保存训练结果
+
+API支持：Tokenizer
+    - fit_on_texts
+    - word_index
+    - index_word
+
+注意：
+    - 索引都是从1开始，因此在创建one-hot编码时，需要将索引减1。
+    - 字典是没有顺序的
+
+"""
 def create_one_hot_encode():
     # 创建词表
-    vocabulary = {"你","今天","真","好看"}
+    vocabulary = {"hope","can","set","you","free"}
 
     # 创建Tokenizer实例化对象
     tokenizer = Tokenizer()
@@ -59,7 +72,7 @@ def get_token_one_hot_encode(token):
 
 if __name__ == '__main__':
     # 创建one-hot编码并保存训练结果
-    # create_one_hot_encode()
+    create_one_hot_encode()
 
     # 获取某个分词的one-hot编码
-    get_token_one_hot_encode("你")
+    # get_token_one_hot_encode("你")

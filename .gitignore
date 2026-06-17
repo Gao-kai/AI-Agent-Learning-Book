@@ -9,3 +9,6 @@ milvus/volumes/**/*
 .trae/
 **/*.pyc
 **/*.pkl
+src/NLP/data/**/*
+src/NLP/libs/**/*
+src/NLP/models/**/*
