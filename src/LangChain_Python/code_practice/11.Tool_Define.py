@@ -2,6 +2,7 @@
 LangChain中支持两种方式定义工具：
 1. 使用官方提供的@tool装饰器
     - parse_docstring=True开启注释的解析，但是一旦开启如果出现语法错误就会报错
+
 2. 自己定义不加装饰器打，但是需要写docstring说明
     - 工具描述 必须
     - 参数类型
@@ -80,8 +81,8 @@ model = ChatOpenAI(
 
 rprint(convert_to_openai_tool(get_weather))
 
-# 绑定自定义工具
-model_with_tools = model.bind_tools([get_weather])
+# 绑定自定义工具,可以指定tool_choice意思是自动调用工具auto、禁止调用工具none或者必须调用工具required
+model_with_tools = model.bind_tools([get_weather], tool_choice="auto")
 
 # 调用工具
 model_with_tools.invoke("帮我查询上海的天气")

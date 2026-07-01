@@ -85,4 +85,4 @@ print(type(chat_prompt_value))
 
 # 模型调用提示词模版
 response = model.invoke(chat_prompt_value)
-rich_print(response.content)
+rich_print(response)

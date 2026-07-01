@@ -19,4 +19,5 @@ model = init_chat_model(
     model=MODEL_NAME,
     api_key=OPENAI_API_KEY,
     base_url=BASE_URL,
+    extra_body={"thinking": {"type": "disabled"}},
 )
