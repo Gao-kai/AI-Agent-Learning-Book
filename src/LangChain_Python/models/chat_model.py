@@ -2,6 +2,9 @@ from langchain.chat_models import init_chat_model
 from dotenv import load_dotenv
 import os
 
+from langchain_deepseek.chat_models import ChatDeepSeek
+from langchain_openai.chat_models.base import ChatOpenAI
+
 """
 基于LangChain统一封装的API init_chat_model实现
 """
@@ -16,8 +19,9 @@ BASE_URL = os.getenv("BASE_URL")
 
 # 初始化Model
 model = init_chat_model(
+    model_provider="openai",
     model=MODEL_NAME,
     api_key=OPENAI_API_KEY,
     base_url=BASE_URL,
-    extra_body={"thinking": {"type": "disabled"}},
+    extra_body={"enable_thinking": False},
 )
