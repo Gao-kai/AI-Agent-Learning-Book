@@ -10,10 +10,11 @@
     1.定义Pydantic模型类
     2.Langchain在运行时自动调用底层的json_schema方法转化为标准的JSON Schema
     3.model在调用with_structured_output时通过工具调用的方法将标准的JSON Schema传递给大模型
-    4.大模型返回结构化Json字符串
-    5.将JSON字符串转化为字典对象
-    6.将字典对象转化为Pydantic对象的实例，并进行类型校验
-    7.如果校验通过，则返回Pydantic对象的实例
+    4.大模型返回结构化Json字符串，Langchain的PydanticStructuredOutputParser解析器会开始解析
+    5.先将JSON字符串转化为py字典对象
+    6.将py字典对象喂给为Pydantic模型，如果类型校验不对则直接报错
+    7.如果校验通过，则返回Pydantic对象的实例，注意返回的不是py的字典而是一个类的实例
+    8.最终在代码里可以直接通过.的方法拿到返回的属性
 
 # with_structured_output方法参数
     1. 第一个参数是输出的模式，支持：
@@ -28,6 +29,9 @@
     2. 基于Field实现描述和默认值等配置
     3. 基于Optional实现可选参数
     4. 基于Enum枚举类
+    5. 可以实现列表提取
+    6. 可以实现嵌套结构
+    7. 可以实现数据限制
 
 """
 
