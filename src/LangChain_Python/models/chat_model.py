@@ -24,4 +24,5 @@ model = init_chat_model(
     api_key=OPENAI_API_KEY,
     base_url=BASE_URL,
     extra_body={"enable_thinking": False},
+    profile={"max_input_tokens": 128000},
 )
