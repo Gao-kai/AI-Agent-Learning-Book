@@ -12,3 +12,4 @@ milvus/volumes/**/*
 src/NLP/data/**/*
 src/NLP/libs/**/*
 src/NLP/models/**/*
+postgres/volumes/**/*
