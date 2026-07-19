@@ -73,11 +73,6 @@ def summarization_middleware_example():
     load_dotenv(override=True)
     conn_string = os.getenv("POSTGRES_DB_URL")
 
-    summarization_middleware = create_summarization_tool_middleware(
-        model=model,
-        max_tokens=500,
-    )
-
     with PostgresSaver.from_conn_string(conn_string) as saver:
         saver.setup()
 
